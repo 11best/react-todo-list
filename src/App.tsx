@@ -3,11 +3,17 @@ import viteLogo from "/vite.svg";
 import "./App.scss";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { increment } from "./redux/actions";
+import { fetchTodos } from "./services";
+import { useEffect } from "react";
 
 function App() {
   const count = useAppSelector((state) => state.score);
   const dispatch = useAppDispatch();
   console.log(count);
+
+  useEffect(() => {
+    dispatch(fetchTodos());
+  }, [dispatch]);
 
   return (
     <>
