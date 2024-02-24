@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <div className="card">
-        {todos.map((todo: any) => (
+        {todos.map((todo: TodoItem) => (
           <p>{todo.title}</p>
         ))}
       </div>
