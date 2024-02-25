@@ -21,3 +21,18 @@ export const createTodoService = async () => {
   const json = await res.json();
   return json;
 };
+
+export const markAsDoneService = async (id: string, completed: boolean) => {
+  const req = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      completed: completed,
+    }),
+  };
+  const res = await fetch(`${base_url}/todos/${id}`, req);
+  const json = await res.json();
+  return json;
+};

@@ -1,6 +1,10 @@
 import { AppDispatch } from "./store";
-import { createTodoService, fetchTodosService } from "../services";
-import { CREATE_TODO, FETCH_TODOS } from "./constant";
+import {
+  createTodoService,
+  fetchTodosService,
+  markAsDoneService,
+} from "../services";
+import { CREATE_TODO, FETCH_TODOS, SET_DONE_TODO } from "./constant";
 
 export const fetchTodos = () => async (dispatch: AppDispatch) => {
   try {
@@ -18,6 +22,16 @@ export const createTodos =
     try {
       const res = await createTodoService();
       dispatch({ type: CREATE_TODO, payload: res });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+export const setDoneTodo =
+  (id: string, completed: boolean) => async (dispatch: AppDispatch) => {
+    try {
+      const res = await markAsDoneService(id, completed);
+      dispatch({ type: SET_DONE_TODO, payload: res });
     } catch (err) {
       console.error(err);
     }
