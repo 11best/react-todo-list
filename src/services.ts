@@ -45,3 +45,18 @@ export const deleteTodoService = async (id: string) => {
   const json = await res.json();
   return json;
 };
+
+export const editTaskService = async (id: string, title: string) => {
+  const req = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: title,
+    }),
+  };
+  const res = await fetch(`${base_url}/todos/${id}`, req);
+  const json = await res.json();
+  return json;
+};

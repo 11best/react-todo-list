@@ -2,12 +2,14 @@ import { AppDispatch } from "./store";
 import {
   createTodoService,
   deleteTodoService,
+  editTaskService,
   fetchTodosService,
   markAsDoneService,
 } from "../services";
 import {
   CREATE_TODO,
   DELETE_TODO,
+  EDIT_TODO,
   FETCH_TODOS,
   SET_DONE_TODO,
 } from "./constant";
@@ -49,3 +51,13 @@ export const deleteTodo = (id: string) => async (dispatch: AppDispatch) => {
     console.error(err);
   }
 };
+
+export const editTask =
+  (id: string, title: string) => async (dispatch: AppDispatch) => {
+    try {
+      const res = await editTaskService(id, title);
+      dispatch({ type: EDIT_TODO, payload: res });
+    } catch (err) {
+      console.error(err);
+    }
+  };

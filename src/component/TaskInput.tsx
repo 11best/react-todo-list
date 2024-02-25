@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
-import { createTodos } from "../redux/actions";
+import { createTodos, editTask } from "../redux/actions";
 
 const TaskInput = (props: {
   isEdit?: boolean;
@@ -16,9 +16,10 @@ const TaskInput = (props: {
   };
 
   const handleSaveEditedTask = () => {
-    // dispatch(createTodos(title));
-    console.log("data", props.data);
-    props.setIsEdit && props.setIsEdit();
+    if (props.data) {
+      dispatch(editTask(props.data.id, title));
+      props.setIsEdit && props.setIsEdit();
+    }
   };
 
   const handleSaveClicked = () => {
