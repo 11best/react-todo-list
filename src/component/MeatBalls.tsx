@@ -2,6 +2,7 @@ const MeatBalls = (props: {
   setIsOpen: () => void;
   isOpen: boolean;
   onDelete: () => void;
+  onEdit: () => void;
 }) => {
   return (
     <>
@@ -13,6 +14,7 @@ const MeatBalls = (props: {
       {props.isOpen && (
         <div className="meatballs-menu">
           <div
+            onClick={props.onEdit}
             className="meatballs-menu-item"
             style={{ paddingTop: "16px", paddingBottom: "8px" }}
           >

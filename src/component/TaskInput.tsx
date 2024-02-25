@@ -2,13 +2,27 @@ import { useState } from "react";
 import { useAppDispatch } from "../redux/hooks";
 import { createTodos } from "../redux/actions";
 
-const TaskInput = () => {
-  const [title, setTitle] = useState("");
+const TaskInput = (props: {
+  isEdit?: boolean;
+  data?: TodoItem;
+  setIsEdit?: () => void;
+}) => {
+  const [title, setTitle] = useState(props.data?.title || "");
   const dispatch = useAppDispatch();
 
   const handleCreateTask = () => {
     dispatch(createTodos(title));
     setTitle("");
+  };
+
+  const handleSaveEditedTask = () => {
+    // dispatch(createTodos(title));
+    console.log("data", props.data);
+    props.setIsEdit && props.setIsEdit();
+  };
+
+  const handleSaveClicked = () => {
+    props.isEdit ? handleSaveEditedTask() : handleCreateTask();
   };
 
   return (
@@ -20,7 +34,7 @@ const TaskInput = () => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
-      {title && <button onClick={() => handleCreateTask()}>Save</button>}
+      {title && <button onClick={() => handleSaveClicked()}>Save</button>}
     </div>
   );
 };
