@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { setDoneTodo } from "../redux/actions";
+import { deleteTodo, setDoneTodo } from "../redux/actions";
 import { useAppDispatch } from "../redux/hooks";
 import MeatBalls from "./MeatBalls";
 
@@ -11,6 +11,11 @@ const TaskItem = (props: { todo: TodoItem }) => {
   const markAsDone = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = e.target;
     dispatch(setDoneTodo(id, checked));
+  };
+
+  const handleDelete = (id: string) => {
+    dispatch(deleteTodo(id));
+    setIsMeatBallsOpen(false);
   };
 
   return (
@@ -36,6 +41,7 @@ const TaskItem = (props: { todo: TodoItem }) => {
         <MeatBalls
           isOpen={isMeatBallsOpen}
           setIsOpen={() => setIsMeatBallsOpen(!isMeatBallsOpen)}
+          onDelete={() => handleDelete(todo.id)}
         />
       </div>
     </div>

@@ -1,5 +1,10 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { CREATE_TODO, FETCH_TODOS, SET_DONE_TODO } from "./constant";
+import {
+  CREATE_TODO,
+  DELETE_TODO,
+  FETCH_TODOS,
+  SET_DONE_TODO,
+} from "./constant";
 
 const initialState: State = {
   todos: [],
@@ -22,6 +27,10 @@ const todoListReducer = (
           return d;
         }
       });
+      return { ...state, todos: update };
+    }
+    case DELETE_TODO: {
+      const update = state.todos.filter((t) => t.id !== action.payload);
       return { ...state, todos: update };
     }
     default:

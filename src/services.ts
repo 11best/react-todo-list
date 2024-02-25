@@ -36,3 +36,12 @@ export const markAsDoneService = async (id: string, completed: boolean) => {
   const json = await res.json();
   return json;
 };
+
+export const deleteTodoService = async (id: string) => {
+  const req = {
+    method: "DELETE",
+  };
+  const res = await fetch(`${base_url}/todos/${id}`, req);
+  const json = await res.json();
+  return json;
+};

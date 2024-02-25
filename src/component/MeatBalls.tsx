@@ -1,4 +1,8 @@
-const MeatBalls = (props: { setIsOpen: () => void; isOpen: boolean }) => {
+const MeatBalls = (props: {
+  setIsOpen: () => void;
+  isOpen: boolean;
+  onDelete: () => void;
+}) => {
   return (
     <>
       <div className="meatballs-icon-wrapper" onClick={props.setIsOpen}>
@@ -8,13 +12,14 @@ const MeatBalls = (props: { setIsOpen: () => void; isOpen: boolean }) => {
       </div>
       {props.isOpen && (
         <div className="meatballs-menu">
-          <p
+          <div
             className="meatballs-menu-item"
             style={{ paddingTop: "16px", paddingBottom: "8px" }}
           >
             Edit
-          </p>
-          <p
+          </div>
+          <div
+            onClick={props.onDelete}
             className="meatballs-menu-item"
             style={{
               paddingBottom: "16px",
@@ -23,7 +28,7 @@ const MeatBalls = (props: { setIsOpen: () => void; isOpen: boolean }) => {
             }}
           >
             Delete
-          </p>
+          </div>
         </div>
       )}
     </>
