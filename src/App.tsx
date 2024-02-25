@@ -13,8 +13,6 @@ function App() {
 
   const [currentFilter, setCurrentFilter] = useState("All");
 
-  console.log(todos, currentFilter);
-
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
