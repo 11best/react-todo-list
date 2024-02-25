@@ -1,10 +1,13 @@
 const TaskInput = () => {
   return (
-    <input
-      className="task-item task-item-input"
-      type="text"
-      placeholder="Add your todo..."
-    />
+    <div className="task-item">
+      <input
+        className="task-item-input"
+        type="text"
+        placeholder="Add your todo..."
+      />
+      <button>Save</button>
+    </div>
   );
 };
 

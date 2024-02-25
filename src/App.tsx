@@ -1,7 +1,7 @@
 import "./App.scss";
 import TaskInput from "./component/TaskInput";
 import TaskItem from "./component/TaskItem";
-import { createTodos, fetchTodos } from "./redux/actions";
+import { createTodos, fetchTodos, setDoneTodo } from "./redux/actions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { useEffect } from "react";
 
