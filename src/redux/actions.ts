@@ -15,17 +15,14 @@ export const fetchTodos = () => async (dispatch: AppDispatch) => {
   }
 };
 
-export const createTodos =
-  () =>
-  // body
-  async (dispatch: AppDispatch) => {
-    try {
-      const res = await createTodoService();
-      dispatch({ type: CREATE_TODO, payload: res });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+export const createTodos = (title: string) => async (dispatch: AppDispatch) => {
+  try {
+    const res = await createTodoService(title);
+    dispatch({ type: CREATE_TODO, payload: res });
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const setDoneTodo =
   (id: string, completed: boolean) => async (dispatch: AppDispatch) => {

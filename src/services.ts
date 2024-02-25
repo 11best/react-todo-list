@@ -6,14 +6,14 @@ export const fetchTodosService = async () => {
   return json;
 };
 
-export const createTodoService = async () => {
+export const createTodoService = async (title: string) => {
   const req = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      title: "test post 2",
+      title: title,
       completed: false,
     }),
   };
