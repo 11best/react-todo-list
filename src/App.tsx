@@ -1,7 +1,7 @@
 import "./App.scss";
 import TaskInput from "./component/TaskInput";
 import TaskItem from "./component/TaskItem";
-import { createTodos, fetchTodos, setDoneTodo } from "./redux/actions";
+import { fetchTodos } from "./redux/actions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
 import { useEffect } from "react";
 
@@ -16,7 +16,6 @@ function App() {
 
   return (
     <div className="container">
-      {/* <button onClick={() => dispatch(createTodos())}>create test</button> */}
       <div className="list-wrapper">
         {/* progress box */}
         <div className="progress-container">
