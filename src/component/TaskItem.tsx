@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { setDoneTodo } from "../redux/actions";
 import { useAppDispatch } from "../redux/hooks";
 import MeatBalls from "./MeatBalls";
@@ -6,6 +6,7 @@ import MeatBalls from "./MeatBalls";
 const TaskItem = (props: { todo: TodoItem }) => {
   const { todo } = props;
   const dispatch = useAppDispatch();
+  const [isMeatBallsOpen, setIsMeatBallsOpen] = useState(false);
 
   const markAsDone = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, checked } = e.target;
@@ -32,7 +33,10 @@ const TaskItem = (props: { todo: TodoItem }) => {
         >
           {todo.title}
         </label>
-        <MeatBalls />
+        <MeatBalls
+          isOpen={isMeatBallsOpen}
+          setIsOpen={() => setIsMeatBallsOpen(!isMeatBallsOpen)}
+        />
       </div>
     </div>
   );

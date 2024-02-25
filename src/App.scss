@@ -2,7 +2,8 @@ $container-bg-color: #f5f5f5;
 $progress-bg-color: #e07c7c;
 $progress-text-color: #ebb9b8;
 $progress-bar-bg-color: #3b3b3b;
-$meatball-color: #9796a8;
+$meatballs-color: #9796a8;
+$placeholder-color: #bcbcbc;
 $primary-color: #585292;
 $white-color: #ffffff;
 
@@ -76,22 +77,52 @@ $white-color: #ffffff;
   width: -webkit-fill-available;
 }
 
-.meatballs-wrapper {
+.meatballs-icon-wrapper {
   position: absolute;
-  top: 8px;
+  top: 7px;
   right: 26px;
   display: flex;
   column-gap: 2px;
-  .meatball-item {
+  cursor: pointer;
+  padding: 2px;
+  &:hover {
+    opacity: 0.8;
+  }
+  .meatball-dot {
     width: 5px;
     height: 5px;
     border-radius: 99px;
-    background-color: $meatball-color;
+    background-color: $meatballs-color;
+  }
+}
+
+.meatballs-menu {
+  background-color: $white-color;
+  box-shadow: 0px 0px 8px 0px #0000001a;
+  position: absolute;
+  right: 16px;
+  top: 26px;
+  border-radius: 10px;
+  z-index: 2;
+  &-item {
+    margin: 0;
+    font-size: 14px;
+    width: 91px;
+    height: 20px;
+    cursor: pointer;
+    padding-left: 20px;
+
+    &:hover {
+      opacity: 0.6;
+    }
   }
 }
 
 input[type="text"]:focus {
   outline: none;
+}
+input[type="text"]::placeholder {
+  color: $placeholder-color;
 }
 
 input[type="checkbox"] {
@@ -103,6 +134,7 @@ input[type="checkbox"] {
   width: 22px;
   height: 22px;
   accent-color: $primary-color;
+  cursor: pointer;
 }
 input[type="checkbox"]:checked {
   background-image: url("src/assets/checkIcon.svg");
@@ -125,4 +157,7 @@ button {
   height: 36px;
   width: 64px;
   cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
