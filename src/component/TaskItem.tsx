@@ -1,9 +1,15 @@
+import { ChangeEvent } from "react";
 import { setDoneTodo } from "../redux/actions";
 import { useAppDispatch } from "../redux/hooks";
 
 const TaskItem = (props: { todo: TodoItem }) => {
   const { todo } = props;
   const dispatch = useAppDispatch();
+
+  const markAsDone = (e: ChangeEvent<HTMLInputElement>) => {
+    const { id, checked } = e.target;
+    dispatch(setDoneTodo(id, checked));
+  };
 
   return (
     <div className="task-item">
@@ -13,9 +19,7 @@ const TaskItem = (props: { todo: TodoItem }) => {
           id={todo.id}
           name={todo.id}
           checked={todo.completed}
-          onChange={(e) => {
-            dispatch(setDoneTodo(e.target.id, e.target.checked));
-          }}
+          onChange={(e) => markAsDone(e)}
         />
         <label htmlFor={todo.id} style={{ marginLeft: "16px" }}>
           {todo.title}
