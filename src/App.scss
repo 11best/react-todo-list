@@ -1,4 +1,9 @@
+$container-bg-color: #f5f5f5;
+$progress-bg-color: #e07c7c;
+$progress-text-color: #ebb9b8;
+$progress-bar-bg-color: #3b3b3b;
 $primary-color: #585292;
+$white-color: #ffffff;
 
 .layout {
   margin: 0;
@@ -6,4 +11,86 @@ $primary-color: #585292;
   place-items: center;
   min-height: 100vh;
   justify-content: center;
+}
+
+.container {
+  background-color: $container-bg-color;
+  width: 100%;
+  max-width: 720px;
+  min-height: 620px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.list-wrapper {
+  width: 100%;
+  margin: 60px 100px;
+}
+
+.progress-container {
+  background-color: $progress-bg-color;
+  color: $white-color;
+  border-radius: 20px;
+  height: 123px;
+  display: flex;
+  flex-direction: column;
+  .progress-detail {
+    height: 100%;
+    margin: 20px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+.task-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-item {
+  width: -webkit-fill-available;
+  background-color: $white-color;
+  font-size: 16px;
+  border-radius: 99px;
+  margin-bottom: 18px;
+  padding: 12px 0px;
+}
+
+.task-item-detail {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.task-item-input {
+  border: none;
+  padding-left: 20px;
+  &:focus {
+    border: none;
+  }
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid $primary-color;
+  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+  accent-color: $primary-color;
+}
+input[type="checkbox"]:checked {
+  background-image: url("src/assets/checkIcon.svg");
+  background-repeat: no-repeat;
+  background-size: 17px;
+  border-radius: 6px;
+  background-color: $primary-color;
+  color: $white-color;
 }
