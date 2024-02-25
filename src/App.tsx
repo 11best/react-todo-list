@@ -13,14 +13,14 @@ function App() {
   }, [dispatch]);
 
   return (
-    <>
+    <div style={{ backgroundColor: "red" }}>
       <button onClick={() => dispatch(createTodos())}>create test</button>
-      <div className="card">
+      <div>
         {todos.map((todo: TodoItem) => (
           <p>{todo.title}</p>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
