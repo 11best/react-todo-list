@@ -1,4 +1,5 @@
 import "./App.scss";
+import Filter from "./component/Filter";
 import ProgressBox from "./component/ProgressBox";
 import TaskInput from "./component/TaskInput";
 import TaskItem from "./component/TaskItem";
@@ -22,9 +23,7 @@ function App() {
         <div className="task-wrapper">
           <div className="task-title-wrapper">
             <h2 style={{ fontSize: "24px", fontWeight: "500" }}>Tasks</h2>
-            <div style={{ border: "1px solid black", padding: "4px" }}>
-              filter
-            </div>
+            <Filter />
           </div>
           <div className="task-item-wrapper">
             {todos.map((todo: TodoItem) => (
