@@ -1,4 +1,5 @@
 import "./App.scss";
+import ProgressBox from "./component/ProgressBox";
 import TaskInput from "./component/TaskInput";
 import TaskItem from "./component/TaskItem";
 import { fetchTodos } from "./redux/actions";
@@ -17,24 +18,7 @@ function App() {
   return (
     <div className="container">
       <div className="list-wrapper">
-        {/* progress box */}
-        <div className="progress-container">
-          <div className="progress-detail">
-            <p style={{ fontSize: "28px", fontWeight: "500", margin: "0" }}>
-              Progress
-            </p>
-            <div
-              style={{
-                height: "8px",
-                width: "100%",
-                borderRadius: "99px",
-                backgroundColor: "#3b3b3b",
-              }}
-            ></div>
-            <span style={{ color: "#ebb9b8" }}>12 completed</span>
-          </div>
-        </div>
-        {/* task */}
+        <ProgressBox data={todos} />
         <div className="task-wrapper">
           <div className="task-title-wrapper">
             <h2 style={{ fontSize: "24px", fontWeight: "500" }}>Tasks</h2>
