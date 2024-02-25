@@ -69,7 +69,9 @@ $white-color: #ffffff;
   font-size: 16px;
   border: none;
   margin-left: 20px;
+  margin-right: 72px;
   padding: 2px;
+  width: -webkit-fill-available;
 }
 
 input[type="text"]:focus {
