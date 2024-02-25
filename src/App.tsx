@@ -5,16 +5,35 @@ import TaskInput from "./component/TaskInput";
 import TaskItem from "./component/TaskItem";
 import { fetchTodos } from "./redux/actions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 function App() {
   const todos = useAppSelector((state) => state.todos);
   const dispatch = useAppDispatch();
-  console.log(todos);
+
+  const [currentFilter, setCurrentFilter] = useState("All");
+
+  console.log(todos, currentFilter);
 
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
+
+  const filterTodo = (filter: string, list: TodoItem[]) => {
+    switch (filter) {
+      case "Done":
+        return list.filter((l) => l.completed === true);
+      case "Undone":
+        return list.filter((l) => l.completed === false);
+      default:
+        return list;
+    }
+  };
+
+  const filteredTodoList = useMemo(
+    () => filterTodo(currentFilter, todos),
+    [todos, currentFilter]
+  );
 
   return (
     <div className="container">
@@ -23,10 +42,13 @@ function App() {
         <div className="task-wrapper">
           <div className="task-title-wrapper">
             <h2 style={{ fontSize: "24px", fontWeight: "500" }}>Tasks</h2>
-            <Filter />
+            <Filter
+              currentFilter={currentFilter}
+              setCurrentFilter={setCurrentFilter}
+            />
           </div>
           <div className="task-item-wrapper">
-            {todos.map((todo: TodoItem) => (
+            {filteredTodoList.map((todo: TodoItem) => (
               <TaskItem todo={todo} />
             ))}
             <TaskInput />
