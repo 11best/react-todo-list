@@ -1,6 +1,6 @@
 import "./App.scss";
+import { createTodos, fetchTodos } from "./redux/actions";
 import { useAppDispatch, useAppSelector } from "./redux/hooks";
-import { fetchTodos } from "./services";
 import { useEffect } from "react";
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
 
   return (
     <>
+      <button onClick={() => dispatch(createTodos())}>create test</button>
       <div className="card">
         {todos.map((todo: TodoItem) => (
           <p>{todo.title}</p>

@@ -1,9 +1,23 @@
-import { setTodos } from "./redux/actions";
-import { AppDispatch } from "./redux/store";
+const base_url = "http://localhost:3001";
 
-export const fetchTodos = () => async (dispatch: AppDispatch) => {
-  const res = await fetch("http://localhost:3001/todos");
-  const json = (await res.json()) as TodoItem[];
-  dispatch(setTodos(json));
+export const fetchTodosService = async () => {
+  const res = await fetch(`${base_url}/todos`);
+  const json = await res.json();
+  return json;
+};
+
+export const createTodoService = async () => {
+  const req = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title: "test post 2",
+      completed: false,
+    }),
+  };
+  const res = await fetch(`${base_url}/todos`, req);
+  const json = await res.json();
   return json;
 };

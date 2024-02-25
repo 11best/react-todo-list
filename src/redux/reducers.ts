@@ -1,5 +1,5 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { SET_TODOS } from "./constant";
+import { CREATE_TODO, FETCH_TODOS } from "./constant";
 
 const initialState: State = {
   todos: [],
@@ -7,11 +7,13 @@ const initialState: State = {
 
 const todoListReducer = (
   state = initialState,
-  action: PayloadAction<TodoItem[]>
+  action: PayloadAction<any>
 ): State => {
   switch (action.type) {
-    case SET_TODOS:
+    case FETCH_TODOS:
       return { ...state, todos: action.payload };
+    case CREATE_TODO:
+      return { ...state, todos: [...state.todos, action.payload] };
     default:
       return state;
   }
