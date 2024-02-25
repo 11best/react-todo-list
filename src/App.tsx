@@ -49,7 +49,7 @@ function App() {
           </div>
           <div className="task-item-wrapper">
             {filteredTodoList.map((todo: TodoItem) => (
-              <TaskItem todo={todo} />
+              <TaskItem key={todo.id} todo={todo} />
             ))}
             <TaskInput />
           </div>

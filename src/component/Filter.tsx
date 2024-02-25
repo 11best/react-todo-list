@@ -28,6 +28,7 @@ const Filter = (props: {
           {filterList.map((filter) => {
             return (
               <div
+                key={filter}
                 onClick={() => handleSelectedFilter(filter)}
                 className={
                   props.currentFilter === filter
